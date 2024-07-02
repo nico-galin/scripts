@@ -4,10 +4,7 @@
 ; Store the original key state of Caps Lock
 originalCapsLockState := GetKeyState("CapsLock", "T")
 
-!CapsLock::
-  ; Temporarily remap Caps Lock to do nothing
-  SetCapsLockState, AlwaysOff
-
+!Shift::
   WinGetClass, OldClass, A
   WinGet, ActiveProcessName, ProcessName, A
   WinGet, WinClassCount, Count, ahk_exe %ActiveProcessName%
@@ -20,15 +17,5 @@ originalCapsLockState := GetKeyState("CapsLock", "T")
     if (OldClass <> "CabinetWClass" or NewClass = "CabinetWClass")
       break
   }
-
-  ; Restore the original state of Caps Lock
-  if (originalCapsLockState)
-    SetCapsLockState, On
-  else
-    SetCapsLockState, Off
-  return
-
-^F1::
-  WinMinimize, A
-  return
+return
 
