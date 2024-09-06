@@ -1,0 +1,24 @@
+{
+  "description": "Change OPTION to CMD+OPTION for Citrix",
+  "manipulators": [
+    {
+      "conditions": [
+        {
+          "bundle_identifiers": ["^com\\.citrix\\.receiver\\.icaviewer\\.mac$"],
+          "type": "frontmost_application_if"
+        }
+      ],
+      "from": {
+        "key_code": "left_option",
+        "modifiers": { "optional": ["any"] }
+      },
+      "to": [
+        {
+          "key_code": "left_command",
+          "modifiers": ["left_option"]
+        }
+      ],
+      "type": "basic"
+    }
+  ]
+}
